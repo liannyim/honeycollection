@@ -1,0 +1,12 @@
+production:
+  password: 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
+  theme_id: "118756868253"
+  store: honey-collection-nz.myshopify.com
+  ignore_files:
+    - settings_data.json # Uncomment this line to avoid resetting theme settings
+development:
+  password: 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
+  theme_id: "123898069149"
+  store: honey-collection-nz.myshopify.com
+  ignore_files:
+    - settings_data.json # Uncomment this line to avoid resetting theme settings
