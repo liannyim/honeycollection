@@ -53,6 +53,7 @@
   --colorDrawerTextDark:{{ settings.color_drawer_text | default: "#fff" | color_darken: 15 }};
   --colorDrawerButton:{{ settings.color_drawer_button | default: "#a26b25" }};
   --colorDrawerButtonText:{{ settings.color_drawer_button_text | default: "#fff" }};
+  --colorGreenHeading: #98B953;
 }
 
 @keyframes spin{
@@ -11047,4 +11048,9 @@ iframe.zoid-component-frame{
   .template-giftcard .logo{
     color:#58686f;
   }
+}
+
+/* Our Ingredients Template */
+#shopify-section-page-sections-ingredients-template p.h2{
+  color: var(--colorGreenHeading);
 }
