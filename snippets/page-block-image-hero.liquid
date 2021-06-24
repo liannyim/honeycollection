@@ -147,6 +147,23 @@
                         </div></div>
                       </h2>
                     {%- endunless -%}
+
+                    {% if block.settings.discover-menu %}
+                      <div class="banner--discover_menu">
+                        <div class="animation-cropper">
+                          <div class="animation-contents">
+                            <ul class="banner__linklist">
+                              {% for link in linklists[block.settings.discover-menu].links %}
+                                <li class="banner__linklist-item h6 ">
+                                  <a class="hero__text-wrap site-nav__link site-nav__link--underline {% if link.current %}current{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+
                     {%- if block.settings.subheading or block.settings.link or block.settings.link_2 -%}
                       {%- unless block.settings.subheading == blank -%}
                         <div class="hero__subtitle">

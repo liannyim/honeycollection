@@ -53,6 +53,7 @@
   --colorDrawerTextDark:{{ settings.color_drawer_text | default: "#fff" | color_darken: 15 }};
   --colorDrawerButton:{{ settings.color_drawer_button | default: "#a26b25" }};
   --colorDrawerButtonText:{{ settings.color_drawer_button_text | default: "#fff" }};
+  --colorGreenHeading: #98B953;
 }
 
 @keyframes spin{
@@ -6851,7 +6852,7 @@ input[type=image]{
     z-index:1;
   }
 
-.hero .slideshow__slide .hero__link .btn,.hero .slideshow__slide .hero__subtitle .animation-contents,.hero .slideshow__slide .hero__title .animation-contents,.hero .slideshow__slide .hero__top-subtitle .animation-contents,[data-aos=hero__animation] .hero__link .btn,[data-aos=hero__animation] .hero__subtitle .animation-contents,[data-aos=hero__animation] .hero__title .animation-contents,[data-aos=hero__animation] .hero__top-subtitle .animation-contents{
+.hero .slideshow__slide .hero__link .btn,.hero .slideshow__slide .hero__subtitle .animation-contents,.hero .slideshow__slide .hero__title .animation-contents,.hero .slideshow__slide .hero__top-subtitle .animation-contents,[data-aos=hero__animation] .hero__link .btn,[data-aos=hero__animation] .hero__subtitle .animation-contents,[data-aos=hero__animation] .hero__title .animation-contents,[data-aos=hero__animation] .hero__top-subtitle .animation-contents, .banner--discover_menu .animation-contents{
     opacity:0
   }
 
@@ -6867,11 +6868,11 @@ input[type=image]{
       opacity:1
   }
 
-.hero.loaded.aos-animate .slideshow__slide.slick-active .hero__top-subtitle .animation-contents,[data-aos=hero__animation].loaded.aos-animate .hero__top-subtitle .animation-contents{
+.hero.loaded.aos-animate .slideshow__slide.slick-active .hero__top-subtitle .animation-contents,[data-aos=hero__animation].loaded.aos-animate .hero__top-subtitle .animation-contents, {
     animation:rise-up 1s cubic-bezier(0.26, 0.54, 0.32, 1) 0.7s forwards;
   }
 
-.hero.loaded.aos-animate .slideshow__slide.slick-active .hero__title .animation-contents,[data-aos=hero__animation].loaded.aos-animate .hero__title .animation-contents{
+.hero.loaded.aos-animate .slideshow__slide.slick-active .hero__title .animation-contents,[data-aos=hero__animation].loaded.aos-animate .hero__title .animation-contents, .banner--discover_menu .animation-contents{
     animation:rise-up 0.8s cubic-bezier(0.26, 0.54, 0.32, 1) 0.3s forwards;
   }
 
@@ -6898,7 +6899,7 @@ input[type=image]{
   transition:none;
 }
 
-.slideshow__slide .hero__subtitle .animation-cropper,.slideshow__slide .hero__title .animation-cropper,.slideshow__slide .hero__top-subtitle .animation-cropper{
+.slideshow__slide .hero__subtitle .animation-cropper,.slideshow__slide .hero__title .animation-cropper,.slideshow__slide .hero__top-subtitle .animation-cropper, .banner--discover_menu .animation-cropper{
       opacity:0;
       transition:none;
     }
@@ -6919,7 +6920,7 @@ input[type=image]{
     transition:all 0.5s ease-in 0.64s;
   }
 
-.slick-current .hero__title .animation-cropper{
+.slick-current .hero__title .animation-cropper, .slick-current .banner--discover_menu .animation-cropper{
     opacity:1;
     transition:all 0.5s ease-in 0.25s;
   }
@@ -6927,7 +6928,7 @@ input[type=image]{
 .slick-current .hero__subtitle .animation-cropper{
     opacity:1;
     transition:all 0.5s ease-in 0.64s;
-  }
+}
 
 .slick-current .hero__link{
     opacity:1;
@@ -6940,7 +6941,7 @@ input[type=image]{
     transition:all 0.5s ease-in 0.05s;
   }
 
-.slideshow__slide.animate-out .hero__subtitle .animation-cropper,.slideshow__slide.animate-out .hero__title .animation-cropper,.slideshow__slide.animate-out .hero__top-subtitle .animation-cropper{
+.slideshow__slide.animate-out .hero__subtitle .animation-cropper,.slideshow__slide.animate-out .hero__title .animation-cropper,.slideshow__slide.animate-out .hero__top-subtitle .animation-cropper, .banner--discover_menu .animation-cropper{
       opacity:0;
       transition:none;
     }
@@ -11046,5 +11047,48 @@ iframe.zoid-component-frame{
 
   .template-giftcard .logo{
     color:#58686f;
+  }
+}
+
+/* Our Ingredients Template */
+#shopify-section-page-sections-ingredients-template p.h2{
+  color: var(--colorGreenHeading);
+}
+/* Discover Manuka Template */
+
+.banner__linklist{
+  display: flex;
+  margin: 10px 0;
+}
+
+.banner__linklist-item .site-nav__link:hover{
+  color: #fff;
+}
+
+.banner__linklist .site-nav__link--underline:after{
+    border-bottom-color: #fff;
+}
+
+.banner__linklist .site-nav__link--underline.current:after{
+    border-bottom: 2px solid #fff;
+    width:84%;
+}
+
+.banner__linklist-item:hover .site-nav__link--underline:after{
+    right:0
+}
+
+@media only screen and (max-width:768px){
+  .banner__linklist{
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .banner__linklist .site-nav__link--underline.current:after{
+    margin: 0 3%;
+    width: 94%;
+  }
+  .banner__linklist-item:hover .site-nav__link--underline:after{
+    right: 0;
+    margin: 0 3%;
   }
 }
