@@ -11170,8 +11170,10 @@ ul.alphabets {
   padding-left: 0;
 }
 
-ul.alphabets li a.disabled{
-  opacity: 0.3;
+ul.alphabets li a:not(.active,.hasIngredients),
+.hasIngredients.disabled{
+  opacity: 0.3!important;
+   cursor: not-allowed!important;
 }
 
 ul.alphabets li a.hasIngredients{

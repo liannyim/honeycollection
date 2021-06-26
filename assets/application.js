@@ -7,11 +7,12 @@ $(document).ready(function () {
     var alphabeticallyTagNameOrdered = $('.ingredient-item').sort(function(a, b) {
         return $(a).data('sort').toLowerCase() > $(b).data('sort').toLowerCase() ? 1 : -1;
     });
-
+    //update wrapper
     $('.our_ingredients_wrapper').html(alphabeticallyTagNameOrdered);
 
     //INIT filters - disable letters that doesn't have ingredients
     filters.each(function(i) {
+
         //get letters from the ingredient tagname
         var tagname = $(this).data('tagname').toLowerCase();
         var compareFirstLetter = tagname.substr(0,1);
@@ -21,43 +22,52 @@ $(document).ready(function () {
             var hasIngredients_letter = $(this).text().toLowerCase();
             if(compareFirstLetter == hasIngredients_letter){
                $(this).addClass('hasIngredients');
-            }else{
-                $(this).addClass('disabled');
             }
         });
-       
+
     });
    
 
     var hasIngredients_triggers = $('ul.alphabets li a.hasIngredients');
-    //filter ingredients on click 
+
+    //filter ingredients on click on letters that has Ingredients
     hasIngredients_triggers.click(function() {
         var takeLetter = $(this).text().toLowerCase();
-        // remove all "active" class
-        triggers.removeClass('active').addClass('disabled');
-
-        //add active to selected letter
-        $(this).addClass('active').removeClass('disabled');
-
         var found = false;
-
-        filters.parents(".ingredient-item").hide();
-
-        filters.each(function(i) {
-            var tagname = $(this).data('tagname').toLowerCase();
-            var compareFirstLetter = tagname.substr(0,1);
-
-            if ( compareFirstLetter ==  takeLetter ) {
-                $(this).parents(".ingredient-item").fadeIn(222);
-                found = true;
-            }
-        });
-    });
-
-    function sort(selector) {
-        
-    // $('.our_ingredients_wrapper').prepend(alphabeticallyOrdered.parents(".ingredient-item"));
-    // console.log(alphabeticallyOrdered.parents(".ingredient-item"));
-    }
       
+        //only filter on non-disabled letter
+       if(!$(this).hasClass('disabled')){
+            
+           // toggle all "disable" class on letters
+            triggers.toggleClass('disabled')
+            
+            //remove active if clicked letter has an active state
+            if($(this).hasClass('active')){
+                $(this).removeClass('active');
+            }
+            //else add active state to clicked letter
+            else{
+                $(this).addClass('active');
+            }
+           
+            //Remove disabled class from init
+            $(this).removeClass('disabled');
+
+            filters.parents(".ingredient-item").fadeToggle(222);
+            
+            filters.each(function(i) {
+
+                var tagname = $(this).data('tagname').toLowerCase();
+                var compareFirstLetter = tagname.substr(0,1);
+
+                if ( compareFirstLetter ==  takeLetter ) {
+                    $(this).parents(".ingredient-item").fadeToggle(222);
+                    found = true;
+                }
+
+            });
+       }
+
+    });
+   
 });
