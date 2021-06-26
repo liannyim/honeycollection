@@ -1,0 +1,125 @@
+{% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
+{% assign product__ingredients-tags = product.tags %}
+
+{% if template == "product" %}
+    <div class="page-width">
+        <div class="grid pdp_ingredients_wrapper">
+            <h1 class="h2 product-single__title">{{ section.settings.product_title }}</h1>
+            <div class="grid__item">
+                {% include "get-ingredients" %}
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="alpbabets_wrapper">
+        <div class="page-width text-center">
+                <ul class="grid__item medium-up--three-quarters medium-up--push-one-eighth alphabets">
+                    <li><a>A</a></li>
+                    <li><a>B</a></li>
+                    <li><a>C</a></li>
+                    <li><a>D</a></li>
+                    <li><a>E</a></li>
+                    <li><a>F</a></li>
+                    <li><a>G</a></li>
+                    <li><a>H</a></li>
+                    <li><a>I</a></li> 
+                    <li><a>J</a></li>
+                    <li><a>K</a></li>
+                    <li><a>L</a></li>
+                    <li><a>M</a></li>
+                    <li><a>N</a></li>
+                    <li><a>O</a></li>
+                    <li><a>P</a></li>
+                    <li><a>Q</a></li>
+                    <li><a>R</a></li>
+                    <li><a>S</a></li>
+                    <li><a>T</a></li>
+                    <li><a>U</a></li>
+                    <li><a>V</a></li>
+                    <li><a>W</a></li>
+                    <li><a>Y</a></li>
+                    <li><a>Z</a></li>
+                </ul>
+            </div>
+    </div>
+    <div class="page-width">
+        <div class="grid">
+            <div class="flex-grid grid__item medium-up--three-quarters medium-up--push-one-eighth our_ingredients_wrapper">
+                {% for ingredient in ingredient_blocks %}
+                    {% assign ingredient_title = ingredient.settings.title %}
+                    {% assign ingredient_desc = ingredient.settings.description %}
+                    {% assign ingredient_icon = ingredient.settings.image %}
+                    {% assign ingredient_tagname = ingredient.settings.tag %}
+                    <div class="ingredient-item medium-up--one-third"  data-sort="{{ ingredient_tagname }}">
+                        <div class="ingredient-item_icon">
+                            <img src="{{ ingredient_icon | img_url: 'master' }}" alt="{{ ingredient_icon.alt }}" />
+                        </div>    
+                         <div class="ingredient-item_info">
+                            <span class="ingredient-name" data-tagname="{{ ingredient_tagname }}">{{ ingredient_title }}</span>
+                            <p class="ingredient-desc">{{ ingredient_desc }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{%- endif -%}
+
+
+{% schema %}
+	{
+		"name": "Ingredients",
+		"class": "our-ingredients",
+		"blocks": [
+			{
+				"type": "ingredient",
+				"name": "Ingredient",
+				"settings": [
+                    {
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "Recommended Size: 70x70px"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Ingredient Heading"
+					},
+					{
+						"type": "textarea",
+						"id": "description",
+						"label": "Description"
+					},
+					{
+						"type": "header",
+						"content": "Settings"
+					},
+					{
+						"type": "text",
+						"id": "tag",
+						"label": "Tag",
+						"info": "Products tagged with this will display ingredient on the Product Page."
+					}
+				]
+			}
+		],
+        "settings":[
+            {
+                "type": "header",
+                "content": "Product Page Only"
+            },
+            {
+                "type": "color",
+                "id": "product_background_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "text",
+                "id": "product_title",
+                "label": "Heading",
+                "default": "What’s In Me?"
+            }         
+        ]
+	}
+{% endschema %}

@@ -1,0 +1,16 @@
+{% for ingredient in ingredient_blocks %}
+    {% assign ingredient_tagname = ingredient.settings.tag | downcase %}
+   {% assign ingredient_title = ingredient.settings.title %}
+    {% assign ingredient_desc = ingredient.settings.description %}
+    {% assign ingredient_icon = ingredient.settings.image %}
+    {% for tagname in product__ingredients-tags %}
+        {% assign tag_lowercase = tagname | downcase %}
+        {% if tag_lowercase contains ingredient_tagname %}
+            <div class="ingredient-item medium-up--one-third">
+                <img src="{{ ingredient_icon | img_url: 'master' }}" alt="{{ ingredient_icon.alt }}" />
+                <span class="ingredient-name">{{ ingredient_title }}</span>
+                <p class="ingredient-desc">{{ ingredient_desc }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
