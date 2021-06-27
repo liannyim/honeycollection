@@ -22,7 +22,7 @@
                     <li><a>F</a></li>
                     <li><a>G</a></li>
                     <li><a>H</a></li>
-                    <li><a>I</a></li> 
+                    <li><a>I</a></li>
                     <li><a>J</a></li>
                     <li><a>K</a></li>
                     <li><a>L</a></li>
@@ -44,16 +44,16 @@
     </div>
     <div class="page-width">
         <div class="grid">
-            <div class="flex-grid grid__item medium-up--three-quarters medium-up--push-one-eighth our_ingredients_wrapper">
+            <div class="flex-grid our_ingredients_wrapper">
                 {% for ingredient in ingredient_blocks %}
                     {% assign ingredient_title = ingredient.settings.title %}
                     {% assign ingredient_desc = ingredient.settings.description %}
                     {% assign ingredient_icon = ingredient.settings.image %}
                     {% assign ingredient_tagname = ingredient.settings.tag %}
-                    <div class="ingredient-item medium-up--one-third"  data-sort="{{ ingredient_tagname }}">
+                    <div class="ingredient-item"  data-sort="{{ ingredient_tagname }}">
                         <div class="ingredient-item_icon">
                             <img src="{{ ingredient_icon | img_url: 'master' }}" alt="{{ ingredient_icon.alt }}" />
-                        </div>    
+                        </div>
                          <div class="ingredient-item_info">
                             <span class="ingredient-name" data-tagname="{{ ingredient_tagname }}">{{ ingredient_title }}</span>
                             <p class="ingredient-desc">{{ ingredient_desc }}</p>
@@ -119,7 +119,7 @@
                 "id": "product_title",
                 "label": "Heading",
                 "default": "What’s In Me?"
-            }         
+            }
         ]
 	}
 {% endschema %}
