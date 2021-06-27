@@ -34,40 +34,50 @@ $(document).ready(function () {
     hasIngredients_triggers.click(function() {
         var takeLetter = $(this).text().toLowerCase();
         var found = false;
-      
-        //only filter on non-disabled letter
-       if(!$(this).hasClass('disabled')){
-            
-           // toggle all "disable" class on letters
-            triggers.toggleClass('disabled')
-            
-            //remove active if clicked letter has an active state
-            if($(this).hasClass('active')){
-                $(this).removeClass('active');
-            }
-            //else add active state to clicked letter
-            else{
-                $(this).addClass('active');
-            }
-           
-            //Remove disabled class from init
-            $(this).removeClass('disabled');
+       
+        if($(this).hasClass('active')){
+            //remove active state if active
+            $(this).removeClass('active'); 
 
-            filters.parents(".ingredient-item").fadeToggle(222);
-            
+            //show all
+            filters.parents(".ingredient-item").fadeIn();
+
+        }else{
+
+            //remove all active state on all letters
+            hasIngredients_triggers.removeClass('active');
+
+            //add active state to selected letter
+            $(this).addClass('active'); 
+
+            //hide all if not hidden
+            filters.parents(".ingredient-item").hide();
+
+            //filter elements 
             filters.each(function(i) {
 
                 var tagname = $(this).data('tagname').toLowerCase();
                 var compareFirstLetter = tagname.substr(0,1);
-
+    
                 if ( compareFirstLetter ==  takeLetter ) {
-                    $(this).parents(".ingredient-item").fadeToggle(222);
+                    $(this).parents(".ingredient-item").fadeIn();
                     found = true;
                 }
-
+    
             });
-       }
-
+        }
     });
+
+   
+
+    if ($('body').hasClass("template-product")) {
+        if($('.product__value-props li').length > 0){
+            //append values props to PDP product desc 
+        $('.product__value-props').appendTo('.product-single__description');
+        }
+        
+    }
+
+    
    
 });
