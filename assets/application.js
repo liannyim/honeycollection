@@ -67,17 +67,5 @@ $(document).ready(function () {
             });
         }
     });
-
-   
-
-    if ($('body').hasClass("template-product")) {
-        if($('.product__value-props li').length > 0){
-            //append values props to PDP product desc 
-        $('.product__value-props').appendTo('.product-single__description');
-        }
-        
-    }
-
-    
    
 });
