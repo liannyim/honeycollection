@@ -11092,3 +11092,206 @@ iframe.zoid-component-frame{
     margin: 0 3%;
   }
 }
+
+/*============================================================================
+	Our Ingredients
+============================================================================*/
+
+#shopify-section-page-sections-ingredients-template .animation-cropper{
+  overflow: unset;
+}
+
+#shopify-section-page-sections-ingredients-template p.h2{
+  margin-bottom: 20px;
+}
+
+#shopify-section-page-sections-ingredients-template .index-section {
+  margin-bottom: 60px;
+}
+
+#shopify-section-page-sections-ingredients-template .hero__title{
+    margin-bottom: 10px;
+}
+
+#shopify-section-page-sections-ingredients-template .hero__subtitle{
+  width: 70%;
+  position: relative;
+  margin: auto;
+}
+
+.our-ingredients .grid{
+  margin-left: 0;
+}
+.our-ingredients .alpbabets_wrapper{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #E8E8E1;
+  border-bottom: 1px solid #E8E8E1;
+}
+
+.our-ingredients .our_ingredients_wrapper {
+  justify-content: flex-start !important;
+  margin: 60px auto 75px auto;
+  max-width: 1200px;
+}
+
+.pdp_ingredients_wrapper .ingredient-item,
+.our-ingredients .our_ingredients_wrapper .ingredient-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+@media only screen and (min-width:600px) {
+  .pdp_ingredients_wrapper .ingredient-item,
+  .our-ingredients .our_ingredients_wrapper .ingredient-item {
+    width: 50%;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .pdp_ingredients_wrapper .ingredient-item,
+  .our-ingredients .our_ingredients_wrapper .ingredient-item {
+    margin-bottom: 60px;
+  }
+}
+
+@media only screen and (min-width:960px) {
+  .pdp_ingredients_wrapper .ingredient-item,
+  .our-ingredients .our_ingredients_wrapper .ingredient-item {
+    margin-bottom: 60px;
+    width: 33.333%;
+  }
+}
+
+.our-ingredients .our_ingredients_wrapper .ingredient-item_icon{
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pdp_ingredients_wrapper .ingredient-item img,
+.our-ingredients .our_ingredients_wrapper .ingredient-item img{
+  width: 100%;
+  height:auto;
+}
+
+.pdp_ingredients_wrapper .ingredient-name,
+.our-ingredients .our_ingredients_wrapper .ingredient-name{
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--colorGreenHeading);
+}
+
+.pdp_ingredients_wrapper .ingredient-desc,
+.our-ingredients .our_ingredients_wrapper .ingredient-desc{
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+.alpbabets_wrapper .page-width{
+  width: inherit;
+}
+
+ul.alphabets {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 30px 0;
+  padding-left: 0;
+}
+
+ul.alphabets li a:not(.active,.hasIngredients),
+.hasIngredients.disabled{
+  opacity: 0.3!important;
+   cursor: not-allowed!important;
+}
+
+ul.alphabets li a.hasIngredients{
+  opacity: 1;
+  cursor: pointer;
+}
+
+ul.alphabets li a.active{
+  opacity: 1;
+  color: #E9B255;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+
+  #shopify-section-page-sections-ingredients-template .hero__title{
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-page-sections-ingredients-template .hero__subtitle{
+    width: 100%;
+  }
+
+  #shopify-section-page-sections-ingredients-template .index-section {
+    margin-bottom: 40px;
+  }
+
+  .our-ingredients .our_ingredients_wrapper .ingredient-item{
+    max-width: 100%;
+    flex-direction: row;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+
+  .our-ingredients .our_ingredients_wrapper .ingredient-item_icon{
+    width: 50px;
+    height: 54px;
+    margin-right: 19px;
+  }
+
+  .our-ingredients .our_ingredients_wrapper .ingredient-item img{
+    min-width: 50px;
+    height: auto;
+  }
+
+  .container-width{
+    width: 100%;
+  }
+
+  ul.alphabets {
+    justify-content: center;
+    padding: 0;
+  }
+
+  ul.alphabets li{
+    width: 24px;
+    margin: 0 6px 10px;
+    text-align: center;
+  }
+
+
+}
+
+/*============================================================================
+	PDP - Ingredients
+============================================================================*/
+
+.pdp_ingredients_wrapper {
+  padding: 80px 120px;
+}
+
+.pdp_ingredients_wrapper .product-single__title{
+  text-align: center;
+}
