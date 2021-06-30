@@ -166,6 +166,7 @@
                   {%- endunless -%}
                 </span>
               {%- endif -%}
+
               {% assign product__ingredients-tags = product.tags %}
               
               <div class="sale-labels-wrapper">
@@ -173,7 +174,7 @@
                 {% if tagname contains 'sale-' %}
                   
                   {% for text in tagname %}
-                    <span class="sale-labels"> {{ text | replace: 'sale','Buy'| replace_first: '-',' ' | replace: '-',' get ' | append: '% off'  }} </span>
+                    <span class="sale-labels"> {{ text | replace: 'sale','Buy'| replace_first: '-',' ' | replace: '-',' get ' | append: '% Off'  }} </span>
                   {% endfor %}
                 {% endif %}
               {%- endfor -%}
