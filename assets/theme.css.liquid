@@ -11342,6 +11342,7 @@ ul.alphabets li a.active{
   .pdp_ingredients_wrapper .ingredient-item img{
     width: 50px;
   }
+  
 
 }
 
@@ -11352,6 +11353,16 @@ ul.alphabets li a.active{
   }
   .pdp_ingredients_wrapper .ingredient-item{
     width: 50%;
+  }
+  .ProductPrice-wrapper,
+  .sale-labels-wrapper{
+    justify-content: center;
+  }
+  .ProductPrice-wrapper{
+    flex-direction: column;
+  }
+  .sale-labels-wrapper{
+    margin-top: 10px;
   }
 }
 
@@ -11376,6 +11387,9 @@ ul.alphabets li a.active{
   }
   .pdp_ingredients_wrapper .ingredient-item a{
     margin-top: 15px!important;
+  }
+  span.sale-labels{
+    font-size: 12px!important;
   }
 }
 
@@ -11425,4 +11439,25 @@ p.full-ingredients{
   font-size: 11px;
   font-weight: 400;
   line-height: 25px;
+}
+.ProductPrice-wrapper,
+.sale-labels-wrapper{
+  display: flex;
+}
+
+.sale-labels-wrapper{
+}
+
+span.sale-labels{
+  color: #E9B255;
+  border: 1px solid #E9B255;
+  padding: 4px 10px;
+  margin: 0 10px 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+span.sale-labels:nth-child(2){
+  margin: 0;
 }

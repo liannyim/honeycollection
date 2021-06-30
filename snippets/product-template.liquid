@@ -148,23 +148,37 @@
               <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
             {%- endif -%}
 
-            <span id="ProductPrice-{{ section_id }}"
-              class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
-              {{ current_variant.price | money }}
-            </span>
-
-            {%- if settings.product_save_amount -%}
-              {%- if settings.product_save_type == 'dollar' -%}
-                {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
-              {%- else -%}
-                {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
-              {%- endif -%}
-              <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
-                {%- unless hide_sale_price -%}
-                  {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
-                {%- endunless -%}
+           <div class="ProductPrice-wrapper">
+              <span id="ProductPrice-{{ section_id }}"
+                class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
+                {{ current_variant.price | money }}
               </span>
-            {%- endif -%}
+
+              {%- if settings.product_save_amount -%}
+                {%- if settings.product_save_type == 'dollar' -%}
+                  {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
+                {%- else -%}
+                  {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+                {%- endif -%}
+                <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                  {%- unless hide_sale_price -%}
+                    {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                  {%- endunless -%}
+                </span>
+              {%- endif -%}
+              {% assign product__ingredients-tags = product.tags %}
+              
+              <div class="sale-labels-wrapper">
+              {% for tagname in product__ingredients-tags %}
+                {% if tagname contains 'sale-' %}
+                  
+                  {% for text in tagname %}
+                    <span class="sale-labels"> {{ text | replace: 'sale','Buy'| replace_first: '-',' ' | replace: '-',' get ' | append: '% off'  }} </span>
+                  {% endfor %}
+                {% endif %}
+              {%- endfor -%}
+            </div>
+           </div>
 
             <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
               {%- capture unit_price_base_unit -%}
