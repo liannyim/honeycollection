@@ -73,12 +73,14 @@ $(document).ready(function () {
     }
 
     if ($('body').hasClass("template-product")) {
+        
         if($('.product__value-props li').length > 0){
             //append values props to PDP product desc 
         $('.product__value-props').appendTo('.product-single__description').removeClass('hide');
         
         }
 
+        //show ingredient title or section if have more than one ingredient tagged
         if($('.ingredient-item').length > 0){
             $('.product-single__title').removeClass('hide');
             $('.product_ingredient').removeClass('hide');
