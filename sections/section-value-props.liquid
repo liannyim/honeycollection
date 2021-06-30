@@ -1,11 +1,11 @@
 {% if section.blocks.size > 0 %}
-	<ul class="product__value-props">
+	<ul class="product__value-props hide">
 		{% for block in section.blocks %}
 		    {% assign vp_tag = block.settings.tag | downcase %}
 		    {% for tag in product.tags %}
 		        {% assign tag_lowercase = tag | downcase %}
 		        {% if tag_lowercase == vp_tag %}
-                    <li class="one-quarter">
+                    <li class="medium-up--one-quarter widescreen--one-quarter">
                         <div class="img-wrapper">
                             <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" />
                         </div>

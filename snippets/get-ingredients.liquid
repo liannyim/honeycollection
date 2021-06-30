@@ -1,16 +1,33 @@
+{% if section.settings.product_title != blank %}
+    <h1 class="h2 product-single__title hide">{{ section.settings.product_title }}</h1>
+{% endif %}
+<div class="grid__item ingredients_wrapper">
 {% for ingredient in ingredient_blocks %}
     {% assign ingredient_tagname = ingredient.settings.tag | downcase %}
-   {% assign ingredient_title = ingredient.settings.title %}
+    {% assign ingredient_title = ingredient.settings.title %}
     {% assign ingredient_desc = ingredient.settings.description %}
     {% assign ingredient_icon = ingredient.settings.image %}
     {% for tagname in product__ingredients-tags %}
         {% assign tag_lowercase = tagname | downcase %}
         {% if tag_lowercase contains ingredient_tagname %}
-            <div class="ingredient-item medium-up--one-third">
-                <img src="{{ ingredient_icon | img_url: 'master' }}" alt="{{ ingredient_icon.alt }}" />
-                <span class="ingredient-name">{{ ingredient_title }}</span>
-                <p class="ingredient-desc">{{ ingredient_desc }}</p>
-            </div>
+            <div class="ingredient-item medium-up--one-half widescreen--one-quarter">
+                        <div class="ingredient-item_icon">
+                            <img src="{{ ingredient_icon | img_url: 'master' }}" alt="{{ ingredient_icon.alt }}" />
+                        </div>
+                         <div class="ingredient-item_info">
+                            <span class="ingredient-name" data-tagname="{{ ingredient_tagname }}">{{ ingredient_title }}</span>
+                            <p class="ingredient-desc">{{ ingredient_desc }}</p>
+                        </div>
+                    </div>
         {% endif %}
     {% endfor %}
 {% endfor %}
+
+{% if product__ingredients-list != blank %}
+    <div class="ingredient-item flex-column medium-up--one-half widescreen--one-quarter">
+        <p class="p1">FULL INGREDIENTS LIST:</p>
+        {{ product__ingredients-list }}
+        <a href="{{ section.settings.button_url }}" class="btn btn--full btn--secondary">{{ section.settings.button_cta }}</a>
+    </div>
+{% endif %}
+</div>

@@ -1,11 +1,24 @@
 {% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
 {% assign product__ingredients-tags = product.tags %}
+{% assign product__ingredients-list = product.metafields.product.ingredient_list %}
+
+{% for collection in product.collections %}
+    {% assign collections_title = collection.title | downcase%}
+    {% for tagname in product__ingredients-tags %}
+    {% assign tag_lowercase = tagname | downcase %}
+        {% if collections_title == tag_lowercase %}
+            {% assign background-color = collection.metafields.backgroud_color.primary %}
+            {% capture collection_background-color %}{{background-color}}{% endcapture %}
+             {% capture product_range %}{{collections_title}}{% endcapture %}
+            {% assign collection_background-color = collection.metafields.backgroud_color.primary %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
 
 {% if template == "product" %}
-    <div class="page-width">
-        <div class="grid pdp_ingredients_wrapper">
-            <h1 class="h2 product-single__title">{{ section.settings.product_title }}</h1>
-            <div class="grid__item">
+    <div class="page-wrapper-{{ product_range | remove: " "  }} product_ingredient hide">
+        <div class="page-width">
+            <div class="grid pdp_ingredients_wrapper"> 
                 {% include "get-ingredients" %}
             </div>
         </div>
@@ -66,6 +79,15 @@
 {%- endif -%}
 
 
+
+
+<style>
+
+.page-wrapper-{{ product_range | remove: " "  }}{
+    background-color: {{ collection_background-color }};
+}
+</style>
+
 {% schema %}
 	{
 		"name": "Ingredients",
@@ -119,6 +141,17 @@
                 "id": "product_title",
                 "label": "Heading",
                 "default": "What’s In Me?"
+            },
+            {
+                "type": "text",
+                "id": "button_cta",
+                "label": "Button CTA",
+                "default": "Read More"
+            },
+                {
+                "type": "url",
+                "id": "button_url",
+                "label": "Button Link"
             }
         ]
 	}
