@@ -76,9 +76,14 @@ $(document).ready(function () {
         
         if($('.product__value-props li').length > 0){
             //append values props to PDP product desc 
-        $('.product__value-props').appendTo('.product-single__description').removeClass('hide');
-        
+            $('.product__value-props').appendTo('.product-single__description').removeClass('hide');
+            
+            //spaced out value props if there are four or more values on a page
+            if($('.product__value-props li').length >= 4){
+                $('.product__value-props').css("justify-content","space-between");
+            }
         }
+
 
         //show ingredient title or section if have more than one ingredient tagged
         if($('.ingredient-item').length > 0){
