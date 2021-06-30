@@ -24,9 +24,9 @@
 {% endfor %}
 
 {% if product__ingredients-list != blank %}
-    <div class="ingredient-item flex-column medium-up--one-half widescreen--one-quarter">
+    <div class="ingredient-item flex-column medium-up--one-half widescreen--one-quarter" id="full-ingredients-list">
         <p class="p1">FULL INGREDIENTS LIST:</p>
-        {{ product__ingredients-list }}
+        <p class="full-ingredients">{{ product__ingredients-list }}</p>
         <a href="{{ section.settings.button_url }}" class="btn btn--full btn--secondary">{{ section.settings.button_cta }}</a>
     </div>
 {% endif %}

@@ -11179,7 +11179,6 @@ iframe.zoid-component-frame{
   margin-bottom: 20px;
 }
 
-.pdp_ingredients_wrapper .ingredient-item img,
 .our-ingredients .our_ingredients_wrapper .ingredient-item img{
   width: 100%;
   height:auto;
@@ -11249,12 +11248,11 @@ ul.alphabets li a.active{
   .pdp_ingredients_wrapper .ingredient-item,
   .our-ingredients .our_ingredients_wrapper .ingredient-item{
     max-width: 100%;
-    flex-direction: row;
+    flex-direction: row!important;
     margin-bottom: 20px;
     margin-right: 0;
   }
 
-  .pdp_ingredients_wrapper .ingredient-item_icon,
   .our-ingredients .our_ingredients_wrapper .ingredient-item_icon{
     width: 50px;
     height: 54px;
@@ -11309,6 +11307,7 @@ ul.alphabets li a.active{
   margin-bottom: 10px;
 }
 
+.ingredient-desc,
 .product__value-props li span{
     font-size: 14px;
     line-height: 20px;
@@ -11325,6 +11324,15 @@ ul.alphabets li a.active{
   padding: 15px;
   margin-bottom: 10px;
 }
+ .pdp_ingredients_wrapper .ingredient-item .ingredient-item_icon{
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+  }
+.pdp_ingredients_wrapper .ingredient-item img{
+  width: 70px;
+  height: 70px;
+}
 @media only screen and (max-width: 600px){
   .product__value-props li{
     width: 25%!important;
@@ -11332,12 +11340,19 @@ ul.alphabets li a.active{
 
   .pdp_ingredients_wrapper .ingredient-item{
     border-left: 1px solid var(--colorGreenHeading)!important;
-    padding-left: 17.52px;
+    padding: 0!important;
     width: 100%!important;
   }
-
+ 
   .pdp_ingredients_wrapper .ingredient-item a{
     width: 60%;
+  }
+  .pdp_ingredients_wrapper .ingredient-item img{
+    width: 50px;
+    height: 54px;
+  }
+  .pdp_ingredients_wrapper .ingredient-item .ingredient-item_icon{
+    justify-content: center;
   }
 
 }
@@ -11392,22 +11407,31 @@ ul.alphabets li a.active{
 
 .pdp_ingredients_wrapper .ingredient-item{
   border-left: 1px solid #111111;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 40px;
+  padding: 0 20px;
 }
 
 .pdp_ingredients_wrapper .ingredient-item.flex-column{
   flex-direction: column!important;
+}
+
+#full-ingredients-list{
+  padding-left: 20px!important;
 }
 .pdp_ingredients_wrapper .ingredient-item p.p1{
   font-weight: 800;
   font-size: 14px;
   line-height: 17.95px;
   letter-spacing: 1px;
+}
+
+p.full-ingredients{
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .pdp_ingredients_wrapper .ingredient-item a{
