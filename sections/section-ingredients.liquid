@@ -1,11 +1,23 @@
 {% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
 {% assign product__ingredients-tags = product.tags %}
+{% assign product__ingredients-list = product.metafields.product.ingredient_list %}
+
+{% for collection in product.collections %}
+    {% assign collections_title = collection.title | downcase%}
+    {% for tagname in product__ingredients-tags %}
+    {% assign tag_lowercase = tagname | downcase %}
+        {% if collections_title == tag_lowercase %}
+            {% capture product_range %}{{collections_title}}{% endcapture %}
+            {% assign collection_background-color = collection.metafields.background_color.primary %}
+            {% assign collection_heading-color = collection.metafields.heading_color.primary %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
 
 {% if template == "product" %}
-    <div class="page-width">
-        <div class="grid pdp_ingredients_wrapper">
-            <h1 class="h2 product-single__title">{{ section.settings.product_title }}</h1>
-            <div class="grid__item">
+    <div class="page-wrapper-{{ product_range | remove: ' '  }} product_ingredient hide">
+        <div class="page-width">
+            <div class="grid pdp_ingredients_wrapper"> 
                 {% include "get-ingredients" %}
             </div>
         </div>
@@ -66,6 +78,26 @@
 {%- endif -%}
 
 
+
+
+<style>
+
+.page-wrapper-{{ product_range | remove: " "  }}{
+    background-color: {{ collection_background-color }};
+}
+
+.page-wrapper-{{ product_range | remove: " "  }} .ingredient-name{
+    color: {{ collection_heading-color }};
+}
+{% if collection_heading-color != blank %}
+@media only screen and (max-width: 1024px){
+    .page-wrapper-{{ product_range | remove: " "  }} .pdp_ingredients_wrapper .ingredient-item {
+        border-left: 1px solid {{ collection_heading-color }}!important;
+    }
+}
+{% endif %}
+</style>
+
 {% schema %}
 	{
 		"name": "Ingredients",
@@ -119,6 +151,17 @@
                 "id": "product_title",
                 "label": "Heading",
                 "default": "What’s In Me?"
+            },
+            {
+                "type": "text",
+                "id": "button_cta",
+                "label": "Button CTA",
+                "default": "Read More"
+            },
+                {
+                "type": "url",
+                "id": "button_url",
+                "label": "Button Link"
             }
         ]
 	}
