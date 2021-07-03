@@ -171,10 +171,10 @@
               
               <div class="sale-labels-wrapper">
               {% for tagname in product__ingredients-tags %}
-                {% if tagname contains 'sale-' %}
+                {% if tagname contains 'Bundle:' %}
                   
                   {% for text in tagname %}
-                    <span class="sale-labels"> {{ text | replace: 'sale','Buy'| replace_first: '-',' ' | replace: '-',' get ' | append: '% Off'  }} </span>
+                    <span class="sale-labels"> {{ text | remove: 'Bundle:' | strip }} </span>
                   {% endfor %}
                 {% endif %}
               {%- endfor -%}
