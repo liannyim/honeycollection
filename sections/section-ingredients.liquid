@@ -1,20 +1,22 @@
 {% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
 {% assign product__ingredients-tags = product.tags %}
 {% assign product__ingredients-list = product.metafields.product.ingredient_list %}
-{% assign collection_background-color = collection.metafields.background_color.primary %}
+
 {% for collection in product.collections %}
     {% assign collections_title = collection.title | downcase | remove: "'" %}
     {% for tagname in product__ingredients-tags %}
     {% assign tag_lowercase = tagname | downcase | remove: "'" %}
-    
+
         {% if collections_title == tag_lowercase %}
             {% if collections_title contains 'comb' %}
                 {% capture product_range %}{{collections_title | remove: " "}}{% endcapture %}
-            
-                {% if collection_background-color == blank %}
+                
+                {% if collection.metafields.background_color.primary == blank %} 
                     {% capture collection_background-color %}{{ section.settings.product_background_color}} {% endcapture %}
+                {% else %}
+                    {% capture collection_background-color %} {{ collection.metafields.background_color.primary }}{% endcapture %}
                 {% endif %}  
-
+            
                 {% assign collection_heading-color = collection.metafields.heading_color.primary %}
             {% endif %}
         {% endif %}
@@ -91,7 +93,7 @@
 <style>
 
 .page-wrapper-{{ product_range }}{
-    background-color: {{ collection_background-color }};
+    background-color: {{ collection_background-color }}!important;
 }
 
 .page-wrapper-{{ product_range }} .ingredient-name{
