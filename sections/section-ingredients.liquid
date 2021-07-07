@@ -3,14 +3,24 @@
 {% assign product__ingredients-list = product.metafields.product.ingredient_list %}
 
 {% for collection in product.collections %}
-    {% assign collections_title = collection.title | downcase%}
+    {% assign collections_title = collection.title | downcase | remove: "'" %}
     {% for tagname in product__ingredients-tags %}
-    {% assign tag_lowercase = tagname | downcase %}
+    {% assign tag_lowercase = tagname | downcase | remove: "'" %}
+
         {% if collections_title == tag_lowercase %}
-            {% capture product_range %}{{collections_title}}{% endcapture %}
-            {% assign collection_background-color = collection.metafields.background_color.primary %}
-            {% assign collection_heading-color = collection.metafields.heading_color.primary %}
+            {% if collections_title contains 'comb' %}
+                {% capture product_range %}{{collections_title | remove: " "}}{% endcapture %}
+                
+                {% if collection.metafields.background_color.primary == blank %} 
+                    {% capture collection_background-color %}{{ section.settings.product_background_color}} {% endcapture %}
+                {% else %}
+                    {% capture collection_background-color %} {{ collection.metafields.background_color.primary }}{% endcapture %}
+                {% endif %}  
+            
+                {% assign collection_heading-color = collection.metafields.heading_color.primary %}
+            {% endif %}
         {% endif %}
+
     {% endfor %}
 {% endfor %}
 
@@ -82,13 +92,17 @@
 
 <style>
 
-.page-wrapper-{{ product_range | remove: " "  }}{
-    background-color: {{ collection_background-color }};
+.page-wrapper-{{ product_range }}{
+    background-color: {{ collection_background-color }}!important;
 }
 
-.page-wrapper-{{ product_range | remove: " "  }} .ingredient-name{
+.page-wrapper-{{ product_range }} .ingredient-name{
     color: {{ collection_heading-color }};
 }
+.page-wrapper-{
+    background-color: {{ section.settings.product_background_color}};
+}
+
 {% if collection_heading-color != blank %}
 @media only screen and (max-width: 1024px){
     .page-wrapper-{{ product_range | remove: " "  }} .pdp_ingredients_wrapper .ingredient-item {
